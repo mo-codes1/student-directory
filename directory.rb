@@ -39,19 +39,11 @@ def print_header
 end
 
 def print(students)
-  puts "Students whose names are less than 12 characters: press enter"
-  characters = gets.chomp
-  number_of_matches = 0
-  students.each do |student|
-    if student[:name].length < 12
-      puts "#{student[:name]} (#{student[:cohort]} cohort)"
-      number_of_matches += 1
-    else
-    end 
+  i = 0
+  while i < students.length
+    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)"
+    i += 1
   end
-  puts
-  puts "We have #{number_of_matches} students whose names are less than 12 characters"
-  puts
 end
 
 def print_footer(students)
