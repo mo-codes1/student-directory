@@ -39,9 +39,19 @@ def print_header
 end
 
 def print(students)
-  students.each_with_index() do |student, index|
-    puts "#{index} #{student[:name]} (#{student[:cohort]} cohort)"
+  puts "Student names beginning with: (Please enter a letter)"
+  letter = gets.chomp
+  number_of_matches = 0
+  students.each do |student|
+    if student[:name].start_with?(letter.upcase, letter.downcase)
+      puts "#{student[:name]} (#{student[:cohort]} cohort)"
+      number_of_matches += 1
+    else
+    end 
   end
+  puts
+  puts "We have #{number_of_matches} students whose name begins with #{letter}"
+  puts
 end
 
 def print_footer(students)
