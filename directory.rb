@@ -39,18 +39,18 @@ def print_header
 end
 
 def print(students)
-  puts "Student names beginning with: (Please enter a letter)"
-  letter = gets.chomp
+  puts "Students whose names are less than 12 characters: press enter"
+  characters = gets.chomp
   number_of_matches = 0
   students.each do |student|
-    if student[:name].start_with?(letter.upcase, letter.downcase)
+    if student[:name].length < 12
       puts "#{student[:name]} (#{student[:cohort]} cohort)"
       number_of_matches += 1
     else
     end 
   end
   puts
-  puts "We have #{number_of_matches} students whose name begins with #{letter}"
+  puts "We have #{number_of_matches} students whose names are less than 12 characters"
   puts
 end
 
