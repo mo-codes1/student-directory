@@ -9,11 +9,7 @@ def input_students
   while !name.empty? do
     # add the student hash to the array
     @students << {name: name, cohort: :november}
-    if @students.count == 1
-      puts "Now we have #{@students.count} student"
-    else
-      puts "Now we have #{@students.count} students"
-    end
+    puts "Now we have #{@students.count} students"
     # get another name from the user
     name = gets.chomp
   end
@@ -57,20 +53,13 @@ def print_header
 end
 
 def print_student_list
-  @students.each_with_index do |student,index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+  @students.each do |student|
+    puts "#{student[:name]} (#{student[:cohort]} cohort)"
   end
 end
 
 def print_footer
-  if @students == []
-    puts "There are no students yet unfortunately"
-  elsif
-    @students.count == 1
-    puts "Overall, we have #{@students.count} great student"
-  else
-    puts "Overall, we have #{@students.count} great students"
-  end
+  puts "Overall, we have #{@students.count} great students"
 end
 
 interactive_menu
