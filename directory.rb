@@ -18,13 +18,16 @@ def input_students
   students = []
   # get the first :name
   name = gets.chomp
+  # get the cohort
+  puts "Which cohort were you in?"
+  cohort = gets.chomp.to_sym
+  cohort.empty? ? cohort = :november : cohort
   # while the :name is not empty, repeat this code
   while !name.empty? do
-    #add a hobby for each of the students
     puts "What do you do for hobbies?"
       hobby = gets.chomp
     # add the student hash to the array
-    students << {:name =>name, :cohort =>:november, :hobby =>hobby}
+    students << {:name =>name, :cohort =>cohort, :hobby =>hobby}
     puts "Now we have #{students.count} students"
     # get another :name from the user
     name = gets.chomp
@@ -39,11 +42,9 @@ def print_header
 end
 
 def print(students)
-  i = 0
-  while i < students.length
-    puts "#{students[i][:name]} (#{students[i][:cohort]} cohort)".center(100)
-    puts ", hobby: #{students[i][:hobby]})".center(100)
-    i += 1
+  students.each_with_index do |student, index|
+    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)".center(100)
+    puts ", (Hobby: #{student[:hobby]})".center(100)
   end
 end
 
@@ -56,5 +57,4 @@ students = input_students
 print_header
 print(students)
 print_footer(students)
-
 
